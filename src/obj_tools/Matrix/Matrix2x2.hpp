@@ -5,6 +5,8 @@
 namespace obj_tools {
 	struct OBJ_TOOLS_EXPORT Matrix2x2
 	{
+		friend Matrix2x2  operator *  (const float& s, const Matrix2x2& m);
+
 		Matrix2x2(void);
 		Matrix2x2(float elements[2][2]);
 		Matrix2x2(const Matrix2x2& m);
@@ -14,6 +16,18 @@ namespace obj_tools {
 
 		float getElement(const int& row, const int& col);
 		void  setElement(const int& row, const int& col, const float& value);
+
+		Matrix2x2  operator +  (const Matrix2x2& m);
+		Matrix2x2  operator -  (const Matrix2x2& m);
+		Matrix2x2& operator += (const Matrix2x2& m);
+		Matrix2x2& operator -= (const Matrix2x2& m);
+		Matrix2x2  operator *  (const float& s);
+		Matrix2x2  operator *  (const Matrix2x2& m);
+
+		Matrix2x2 transposition(void);
+		Matrix2x2 inverse(void);
+
+		float determinant(void);
 
 		private: //__________________
 
