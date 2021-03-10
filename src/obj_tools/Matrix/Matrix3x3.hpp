@@ -5,29 +5,31 @@
 namespace obj_tools {
 	struct OBJ_TOOLS_EXPORT Matrix3x3
 	{
-		friend Matrix3x3  operator *  (const float& s, const Matrix3x3& m);
+		friend OBJ_TOOLS_EXPORT Matrix3x3  operator *  (const float& s, const Matrix3x3& m);
 
 		Matrix3x3(void);
-		Matrix3x3(float elements[3][3]);
 		Matrix3x3(const Matrix3x3& m);
 
-		Matrix3x3& operator =(float elements[3][3]);
 		Matrix3x3& operator =(const Matrix3x3& m);
 
-		float getElement(const int& row, const int& col);
+		float getElement(const int& row, const int& col) const;
 		void  setElement(const int& row, const int& col, const float& value);
 
-		Matrix3x3  operator +  (const Matrix3x3& m);
-		Matrix3x3  operator -  (const Matrix3x3& m);
+		Matrix3x3  operator +  (const Matrix3x3& m) const;
+		Matrix3x3  operator -  (const Matrix3x3& m) const;
+		Matrix3x3  operator *  (const float& s) const;
 		Matrix3x3& operator += (const Matrix3x3& m);
 		Matrix3x3& operator -= (const Matrix3x3& m);
-		Matrix3x3  operator *  (const float& s);
-		Matrix3x3  operator *  (const Matrix3x3& m);
+		Matrix3x3  operator *= (const float& s);
+		
+		Matrix3x3  operator *  (const Matrix3x3& m) const;
 
-		Matrix3x3 transposition(void);
-		Matrix3x3 inverse(void);
+		bool	   operator == (const Matrix3x3& m) const;
 
-		float determinant(void);
+		Matrix3x3 transposition(void) const;
+		Matrix3x3 inverse(void) const;
+
+		float determinant(void) const;
 
 	private: //__________________
 

@@ -4,7 +4,7 @@
 
 using namespace obj_tools;
 
-Vector2D obj_tools::operator*(const float& s, const Vector2D& v) {
+Vector2D OBJ_TOOLS_EXPORT obj_tools::operator*(const float& s, const Vector2D& v) {
 	return Vector2D(
 		s * v.x_, 
 		s * v.y_
@@ -33,21 +33,21 @@ Vector2D& Vector2D::operator = (const Vector2D& v){
 	return *this;
 }
 
-Vector2D Vector2D::operator +  (const Vector2D& v) { 
+Vector2D Vector2D::operator +  (const Vector2D& v) const {
 	return Vector2D(
 		this->x_ + v.x_, 
 		this->y_ + v.y_
 	); 
 }
 
-Vector2D Vector2D::operator -  (const Vector2D& v) {	
+Vector2D Vector2D::operator -  (const Vector2D& v) const {
 	return Vector2D(
 		this->x_ - v.x_, 
 		this->y_ - v.y_
 	); 
 }
 
-Vector2D Vector2D::operator *  (const float& s) { 
+Vector2D Vector2D::operator *  (const float& s) const {
 	return Vector2D(
 		this->x_ * s, 
 		this->y_ * s
@@ -75,22 +75,29 @@ Vector2D& Vector2D::operator *= (const float& s) {
 	return *this;
 }
 
-double Vector2D::dot(const Vector2D& v) {
+bool Vector2D::operator == (const Vector2D& v) const {
+	return(
+		this->x_ == v.x_ &&
+		this->y_ == v.y_
+	);
+}
+
+double Vector2D::dot(const Vector2D& v) const {
 	return (
 		this->x_ * (double)v.x_ + 
 		this->y_ * (double)v.y_
 	);
 }
 
-double Vector2D::norm		(void) { return sqrt(normSquared()); }
-double Vector2D::normSquared(void) { return dot(*this); }
+double Vector2D::norm		(void) const { return sqrt(normSquared()); }
+double Vector2D::normSquared(void) const { return dot(*this); }
 
-Vector2D Vector2D::normalize(const float& tolerance){
+Vector2D Vector2D::normalize(const double& tolerance) const {
 	Vector2D v;
 
 	double length = this->norm();
 	if (length >= tolerance) {
-		v = *this * (1 / length);
+		v = *this * (float)(1.0 / length);
 	}
 
 	return v;

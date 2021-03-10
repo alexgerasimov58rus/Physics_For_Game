@@ -8,7 +8,7 @@
 
 using namespace obj_tools;
 
-Matrix2x2  obj_tools::operator * (const float& s, const Matrix2x2& m) {
+Matrix2x2 OBJ_TOOLS_EXPORT obj_tools::operator * (const float& s, const Matrix2x2& m) {
     Matrix2x2 res;
 
     for (int i = 0; i < MAX_ROWS; i++) {
@@ -26,30 +26,12 @@ Matrix2x2::Matrix2x2(void) {
     this->elements_[1][1] = 1.0f;
 }
 
-Matrix2x2::Matrix2x2(float elements[2][2]) {
-    for    (int i = 0; i < MAX_ROWS; i++) {
-        for(int j = 0; j < MAX_COLS; j++) {
-            this->elements_[i][j] = elements[i][j];
-        }
-    }
-}
-
 Matrix2x2::Matrix2x2(const Matrix2x2& m) {
     for    (int i = 0; i < MAX_ROWS; i++) {
         for(int j = 0; j < MAX_COLS; j++) {
             this->elements_[i][j] = m.elements_[i][j];
         }
     }
-}
-
-Matrix2x2& Matrix2x2::operator =(float elements[2][2]) {
-    for    (int i = 0; i < MAX_ROWS; i++) {
-        for(int j = 0; j < MAX_COLS; j++) {
-            this->elements_[i][j] = elements[i][j];
-        }
-    }
-
-    return *this;
 }
 
 Matrix2x2& Matrix2x2::operator =(const Matrix2x2& m){
@@ -62,7 +44,7 @@ Matrix2x2& Matrix2x2::operator =(const Matrix2x2& m){
     return *this;
 }
 
-float Matrix2x2::getElement(const int& row, const int& col) {
+float Matrix2x2::getElement(const int& row, const int& col) const {
     int r = (row >= MAX_ROWS) ? MAX_ROWS - 1 : row;
     int c = (col >= MAX_COLS) ? MAX_COLS - 1 : col;
 
@@ -82,7 +64,7 @@ void Matrix2x2::setElement(const int& row, const int& col, const float& value) {
     this->elements_[r][c] = value;
 }
 
-Matrix2x2 Matrix2x2::operator + (const Matrix2x2& m) {    
+Matrix2x2 Matrix2x2::operator + (const Matrix2x2& m) const {    
     Matrix2x2 res;
 
     for (int i = 0; i < MAX_ROWS; i++) {
@@ -93,7 +75,7 @@ Matrix2x2 Matrix2x2::operator + (const Matrix2x2& m) {
     return res;
 }
 
-Matrix2x2 Matrix2x2::operator - (const Matrix2x2& m) {
+Matrix2x2 Matrix2x2::operator - (const Matrix2x2& m) const {
     Matrix2x2 res;
 
     for (int i = 0; i < MAX_ROWS; i++) {
@@ -122,7 +104,16 @@ Matrix2x2& Matrix2x2::operator -= (const Matrix2x2& m) {
     return *this;
 }
 
-Matrix2x2 Matrix2x2::operator * (const float& s){
+Matrix2x2& Matrix2x2::operator *= (const float& s) {
+    for (int i = 0; i < MAX_ROWS; i++) {
+        for (int j = 0; j < MAX_COLS; j++) {
+            this->elements_[i][j] *= s;
+        }
+    }
+    return *this;
+}
+
+Matrix2x2 Matrix2x2::operator * (const float& s) const {
     Matrix2x2 res;
 
     for (int i = 0; i < MAX_ROWS; i++) {
@@ -133,7 +124,7 @@ Matrix2x2 Matrix2x2::operator * (const float& s){
     return res;
 }
 
-Matrix2x2 Matrix2x2::operator * (const Matrix2x2& m) {
+Matrix2x2 Matrix2x2::operator * (const Matrix2x2& m) const {
     Matrix2x2 res;
 
     for (int i = 0; i < MAX_ROWS; i++) {
@@ -146,7 +137,17 @@ Matrix2x2 Matrix2x2::operator * (const Matrix2x2& m) {
     return res;
 }
 
-Matrix2x2 Matrix2x2::transposition(void) {
+bool Matrix2x2::operator == (const Matrix2x2& m) const {
+    for (int i = 0; i < MAX_ROWS; i++) {
+        for (int j = 0; j < MAX_COLS; j++) {
+            if (this->elements_[i][j] != m.elements_[i][j]) return false;
+        }
+    }
+
+    return true;
+}
+
+Matrix2x2 Matrix2x2::transposition(void) const {
     Matrix2x2 res;
 
     for (int i = 0; i < MAX_ROWS; i++) {
@@ -157,14 +158,14 @@ Matrix2x2 Matrix2x2::transposition(void) {
     return res;
 }
 
-float Matrix2x2::determinant(void) {
+float Matrix2x2::determinant(void) const {
     return(
         this->elements_[0][0] * this->elements_[1][1] - 
         this->elements_[1][0] * this->elements_[0][1]
     );
 }
 
-Matrix2x2 Matrix2x2::inverse(void) {
+Matrix2x2 Matrix2x2::inverse(void) const {
     Matrix2x2 res;
     float det = this->determinant();
 
