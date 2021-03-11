@@ -65,6 +65,18 @@ namespace unittests
 			Assert::IsTrue(v1 == rs);
 		}
 
+		TEST_METHOD(TestMultiplyToMatrix)
+		{
+			Vector2D v1(1.0f, 0.0f);
+			Matrix2x2 R = Matrix2x2::createRotateMatrix(90.0f);
+			Matrix2x2 S = Matrix2x2::createScaleMatrix(3.0f, 3.0f);
+		
+			Vector2D rs(0.0f, 3.0f);
+			Vector2D v2 = (v1 * R * S).floor();
+
+			Assert::IsTrue( v2 == rs );
+		}
+
 		TEST_METHOD(TestDot)
 		{
 			Vector2D v1(2, 3);
@@ -90,6 +102,12 @@ namespace unittests
 			Assert::IsTrue(fabs(v1.normalize(1e-6).getY() - v2.getY()) < 1e-6);
 		}
 
-		
+		TEST_METHOD(TestFloor)
+		{
+			Vector2D v1(4.12345f, 5.23456f);
+			Vector2D rs(4.123f, 5.234f);
+
+			Assert::IsTrue(v1.floor(3) == rs);
+		}
 	};
 }

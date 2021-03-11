@@ -108,5 +108,13 @@ namespace unittests
 
 			Assert::IsTrue(v1.cross(v2) == rs);
 		}
+
+		TEST_METHOD(TestFloor)
+		{
+			Vector3D v1(4.12345f, 5.23456f, 6.65433f);
+			Vector3D rs(4.123f, 5.234f, 6.654f);
+
+			Assert::IsTrue(v1.floor(3) == rs);
+		}
 	};
 };

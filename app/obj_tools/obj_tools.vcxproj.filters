@@ -19,6 +19,9 @@
     <Filter Include="Source Files\Matrix">
       <UniqueIdentifier>{3fa24938-f2b2-4fc9-bbb1-195a69606ac0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Math">
+      <UniqueIdentifier>{ed05c20c-b089-4146-b933-b6bb1f94109d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\obj_tools\Vector\Vector2D.cpp">
@@ -32,6 +35,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\obj_tools\Matrix\Matrix3x3.cpp">
       <Filter>Source Files\Matrix</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\obj_tools\Math\Math.cpp">
+      <Filter>Source Files\Math</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
