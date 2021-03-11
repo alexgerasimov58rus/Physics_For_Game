@@ -67,14 +67,18 @@ namespace unittests
 
 		TEST_METHOD(TestMultiplyToMatrix)
 		{
-			Vector2D v1(1.0f, 0.0f);
-			Matrix2x2 R = Matrix2x2::createRotateMatrix(90.0f);
-			Matrix2x2 S = Matrix2x2::createScaleMatrix(3.0f, 3.0f);
-		
-			Vector2D rs(0.0f, 3.0f);
-			Vector2D v2 = (v1 * R * S).floor();
+			Vector2D  v1(2.0f, 3.0f);
+			Matrix2x2 m;
+			m.setElement(0, 0, 2.0f);
+			m.setElement(0, 1,-5.0f);
+			m.setElement(1, 0, 8.0f);
+			m.setElement(1, 1, 3.0f);
 
-			Assert::IsTrue( v2 == rs );
+			Vector2D rs(28, -1);
+
+			Assert::IsTrue( v1 * m == rs );
+			v1 *= m;
+			Assert::IsTrue(v1 == rs);
 		}
 
 		TEST_METHOD(TestDot)

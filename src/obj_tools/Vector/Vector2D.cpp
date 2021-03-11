@@ -57,8 +57,8 @@ Vector2D Vector2D::operator *  (const float& s) const {
 
 Vector2D Vector2D::operator * (const Matrix2x2& m) const {
 	return Vector2D(
-		this->x_ * m.getElement(0, 0) + this->y_ * m.getElement(0 ,1),
-		this->x_ * m.getElement(1, 0) + this->y_ * m.getElement(1, 1)
+		this->x_ * m.getElement(0, 0) + this->y_ * m.getElement(1 ,0),
+		this->x_ * m.getElement(0, 1) + this->y_ * m.getElement(1, 1)
 	);
 }
 
@@ -84,8 +84,11 @@ Vector2D& Vector2D::operator *= (const float& s) {
 }
 
 Vector2D& Vector2D::operator *= (const Matrix2x2& m) {
-	this->x_ = this->x_ * m.getElement(0, 0) + this->y_ * m.getElement(0, 1);
-	this->y_ = this->x_ * m.getElement(1, 0) + this->y_ * m.getElement(1, 1);
+	float x = this->x_ * m.getElement(0, 0) + this->y_ * m.getElement(1, 0);
+	float y = this->x_ * m.getElement(0, 1) + this->y_ * m.getElement(1, 1);
+
+	this->x_ = x;
+	this->y_ = y;
 
 	return *this;
 }

@@ -24,8 +24,8 @@ Matrix2x2 Matrix2x2::createRotateMatrix(const double& deg) {
     Matrix2x2 res;
 
     res.setElement(0, 0, (float)cos(Math::degToRad(deg)));
-    res.setElement(0, 1,-(float)sin(Math::degToRad(deg)));
-    res.setElement(1, 0, (float)sin(Math::degToRad(deg)));
+    res.setElement(0, 1, (float)sin(Math::degToRad(deg)));
+    res.setElement(1, 0,-(float)sin(Math::degToRad(deg)));
     res.setElement(1, 1, (float)cos(Math::degToRad(deg)));
 
     return res;
