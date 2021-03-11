@@ -39,6 +39,8 @@ namespace obj_tools {
 		Vector3D normalize(const float& tolerance = 1e-6) const;
 		Vector3D cross(const Vector3D& v) const;
 
+		Vector3D floor(const int& accuracy = 6) const;
+
 		private: //_____________________________
 
 		float x_, y_, z_;

@@ -1,5 +1,6 @@
 
 #include "Matrix2x2.hpp"
+#include "../Math/Math.hpp"
 #include <math.h>
 
 #define MAX_ROWS 2
@@ -18,6 +19,27 @@ Matrix2x2 OBJ_TOOLS_EXPORT obj_tools::operator * (const float& s, const Matrix2x
     }
     return res;
 }
+
+Matrix2x2 Matrix2x2::createRotateMatrix(const double& deg) {
+    Matrix2x2 res;
+
+    res.setElement(0, 0, (float)cos(Math::degToRad(deg)));
+    res.setElement(0, 1,-(float)sin(Math::degToRad(deg)));
+    res.setElement(1, 0, (float)sin(Math::degToRad(deg)));
+    res.setElement(1, 1, (float)cos(Math::degToRad(deg)));
+
+    return res;
+}
+
+Matrix2x2 Matrix2x2::createScaleMatrix(const float& dx, const float& dy) {
+    Matrix2x2 res;
+
+    res.setElement(0, 0, dx);
+    res.setElement(1, 1, dy);
+
+    return res;
+}
+
 
 Matrix2x2::Matrix2x2(void) {
     this->elements_[0][0] = 1.0f;

@@ -1,9 +1,12 @@
 
 #pragma once
-
 #include "../tools_exp.hpp"
 
+
 namespace obj_tools {
+
+	struct Matrix2x2;
+
 	struct OBJ_TOOLS_EXPORT Vector2D
 	{
 		friend OBJ_TOOLS_EXPORT Vector2D operator *(const float& s, const Vector2D& v);
@@ -23,10 +26,12 @@ namespace obj_tools {
 		Vector2D  operator +  (const Vector2D& v) const;
 		Vector2D  operator -  (const Vector2D& v) const;
 		Vector2D  operator *  (const float& s)    const;
+		Vector2D  operator *  (const Matrix2x2& m) const;
 
 		Vector2D& operator += (const Vector2D& v);
 		Vector2D& operator -= (const Vector2D& v);
 		Vector2D& operator *= (const float& s);
+		Vector2D& operator *= (const Matrix2x2& m);
 
 		bool	  operator == (const Vector2D& v) const;
 
@@ -35,6 +40,7 @@ namespace obj_tools {
 		double normSquared(void) const;
 
 		Vector2D normalize(const double& tolerance = 1e-6) const;
+		Vector2D floor(const int& accuracy = 6) const;
 
 		private: //_______________________________
 

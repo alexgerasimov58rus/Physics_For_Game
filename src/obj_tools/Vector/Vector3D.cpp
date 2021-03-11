@@ -123,3 +123,11 @@ Vector3D Vector3D::cross(const Vector3D& v) const {
 		this->x_ * v.y_ - v.x_ * this->y_
 	);
 }
+
+Vector3D Vector3D::floor(const int& accuracy) const {
+	return Vector3D(
+		(float)((int)(this->x_ * pow(10, accuracy)) / pow(10, accuracy)),
+		(float)((int)(this->y_ * pow(10, accuracy)) / pow(10, accuracy)),
+		(float)((int)(this->z_ * pow(10, accuracy)) / pow(10, accuracy))
+	);
+}

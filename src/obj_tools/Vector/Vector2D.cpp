@@ -1,5 +1,6 @@
 
 #include "Vector2D.hpp"
+#include "../Matrix/Matrix2x2.hpp"
 #include <math.h>
 
 using namespace obj_tools;
@@ -54,6 +55,13 @@ Vector2D Vector2D::operator *  (const float& s) const {
 	); 
 }
 
+Vector2D Vector2D::operator * (const Matrix2x2& m) const {
+	return Vector2D(
+		this->x_ * m.getElement(0, 0) + this->y_ * m.getElement(0 ,1),
+		this->x_ * m.getElement(1, 0) + this->y_ * m.getElement(1, 1)
+	);
+}
+
 Vector2D& Vector2D::operator += (const Vector2D& v){
 	this->x_ += v.x_;
 	this->y_ += v.y_;
@@ -71,6 +79,13 @@ Vector2D& Vector2D::operator -= (const Vector2D& v) {
 Vector2D& Vector2D::operator *= (const float& s) {
 	this->x_ *= s;
 	this->y_ *= s;
+
+	return *this;
+}
+
+Vector2D& Vector2D::operator *= (const Matrix2x2& m) {
+	this->x_ = this->x_ * m.getElement(0, 0) + this->y_ * m.getElement(0, 1);
+	this->y_ = this->x_ * m.getElement(1, 0) + this->y_ * m.getElement(1, 1);
 
 	return *this;
 }
@@ -101,4 +116,11 @@ Vector2D Vector2D::normalize(const double& tolerance) const {
 	}
 
 	return v;
+}
+
+Vector2D Vector2D::floor(const int& accuracy) const {
+	return Vector2D(
+		(float)((int)(this->x_ * pow(10, accuracy)) / pow(10, accuracy)),
+		(float)((int)(this->y_ * pow(10, accuracy)) / pow(10, accuracy))
+	);
 }

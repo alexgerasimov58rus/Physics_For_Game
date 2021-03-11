@@ -5,7 +5,10 @@
 namespace obj_tools {
 	struct OBJ_TOOLS_EXPORT Matrix2x2
 	{
-		friend OBJ_TOOLS_EXPORT Matrix2x2 operator *  (const float& s, const Matrix2x2& m);
+		friend OBJ_TOOLS_EXPORT Matrix2x2 operator * (const float& s, const Matrix2x2& m);
+
+		static Matrix2x2 createRotateMatrix(const double& deg);
+		static Matrix2x2 createScaleMatrix(const float& dx, const float& dy);
 
 		Matrix2x2(void);
 		Matrix2x2(const Matrix2x2& m);
