@@ -22,6 +22,12 @@
     <Filter Include="Source Files\Math">
       <UniqueIdentifier>{ed05c20c-b089-4146-b933-b6bb1f94109d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Mesh">
+      <UniqueIdentifier>{2f20bb70-b2da-4c59-97ec-ae34707870ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\String">
+      <UniqueIdentifier>{0fef6d72-abaf-4983-bcbe-c66c1889bcc4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\obj_tools\Vector\Vector2D.cpp">
@@ -38,6 +44,12 @@
     </ClCompile>
     <ClCompile Include="..\..\src\obj_tools\Math\Math.cpp">
       <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\obj_tools\Mesh\Mesh.cpp">
+      <Filter>Source Files\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\obj_tools\String\String.cpp">
+      <Filter>Source Files\String</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

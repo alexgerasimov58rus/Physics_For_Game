@@ -68,6 +68,27 @@ namespace unittests
 			Assert::IsTrue(v1 == rs);
 		}
 
+		TEST_METHOD(TestMultiplyToMatrix)
+		{
+			Vector3D  v1(2.0f, 3.0f, 4.0f);
+			Matrix3x3 m;
+			m.setElement(0, 0, 1.0f);
+			m.setElement(0, 1, -2.0f);
+			m.setElement(0, 2, 3.0f);
+			m.setElement(1, 0, -4.0f);
+			m.setElement(1, 1, 5.0f);
+			m.setElement(1, 2, -6.0f);
+			m.setElement(2, 0, 7.0f);
+			m.setElement(2, 1, -8.0f);
+			m.setElement(2, 2, 9.0f);
+
+			Vector3D rs(18, -21, 24);
+
+			Assert::IsTrue(v1 * m == rs);
+			v1 *= m;
+			Assert::IsTrue(v1 == rs);
+		}
+
 		TEST_METHOD(TestDot)
 		{
 			Vector3D v1(2, 3, 4);
