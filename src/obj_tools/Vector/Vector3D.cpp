@@ -1,5 +1,6 @@
 
 #include "Vector3D.hpp"
+#include "../Matrix/Matrix3x3.hpp"
 #include <math.h>
 
 using namespace obj_tools;
@@ -62,6 +63,14 @@ Vector3D Vector3D::operator *  (const float& s) const {
 	);
 }
 
+Vector3D Vector3D::operator *  (const Matrix3x3& m) const {
+	return Vector3D(
+		this->x_ * m.getElement(0, 0) + this->y_ * m.getElement(1, 0) + this->z_ * m.getElement(2, 0),
+		this->x_ * m.getElement(0, 1) + this->y_ * m.getElement(1, 1) + this->z_ * m.getElement(2, 1),
+		this->x_ * m.getElement(0, 2) + this->y_ * m.getElement(1, 2) + this->z_ * m.getElement(2, 2)
+	);
+}
+
 Vector3D& Vector3D::operator += (const Vector3D& v) {
 	this->x_ += v.x_;
 	this->y_ += v.y_;
@@ -82,6 +91,18 @@ Vector3D& Vector3D::operator *= (const float& s) {
 	this->x_ *= s;
 	this->y_ *= s;
 	this->z_ *= s;
+
+	return *this;
+}
+
+Vector3D& Vector3D::operator *= (const Matrix3x3& m) {
+	float x = this->x_ * m.getElement(0, 0) + this->y_ * m.getElement(1, 0) + this->z_ * m.getElement(2, 0);
+	float y = this->x_ * m.getElement(0, 1) + this->y_ * m.getElement(1, 1) + this->z_ * m.getElement(2, 1);
+	float z = this->x_ * m.getElement(0, 2) + this->y_ * m.getElement(1, 2) + this->z_ * m.getElement(2, 2);
+
+	this->x_ = x;
+	this->y_ = y;
+	this->z_ = z;
 
 	return *this;
 }

@@ -7,6 +7,12 @@ namespace obj_tools {
 	{
 		friend OBJ_TOOLS_EXPORT Matrix3x3  operator *  (const float& s, const Matrix3x3& m);
 
+		static Matrix3x3 createScaleMatrix(const float& dx, const float& dy, const float& dz);
+		
+		static Matrix3x3 createRotateXMatrix(const double& deg);
+		static Matrix3x3 createRotateYMatrix(const double& deg);
+		static Matrix3x3 createRotateZMatrix(const double& deg);
+
 		Matrix3x3(void);
 		Matrix3x3(const Matrix3x3& m);
 

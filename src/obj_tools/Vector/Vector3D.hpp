@@ -4,6 +4,9 @@
 #include "../tools_exp.hpp"
 
 namespace obj_tools {
+
+	struct Matrix3x3;
+
 	struct OBJ_TOOLS_EXPORT Vector3D
 	{
 		friend OBJ_TOOLS_EXPORT Vector3D operator *(const float& s, const Vector3D& v);
@@ -25,10 +28,12 @@ namespace obj_tools {
 		Vector3D  operator +  (const Vector3D& v) const;
 		Vector3D  operator -  (const Vector3D& v) const;
 		Vector3D  operator *  (const float& s) const;
+		Vector3D  operator *  (const Matrix3x3& m) const;
 
 		Vector3D& operator += (const Vector3D& v);
 		Vector3D& operator -= (const Vector3D& v);
 		Vector3D& operator *= (const float& s);
+		Vector3D& operator *= (const Matrix3x3& m);
 
 		bool	  operator == (const Vector3D& v) const;
 

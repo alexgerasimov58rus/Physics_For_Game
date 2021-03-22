@@ -1,5 +1,6 @@
 
 #include "Matrix3x3.hpp"
+#include "../Math/Math.hpp"
 #include <math.h>
 
 #define MAX_ROWS 3
@@ -16,6 +17,49 @@ Matrix3x3 OBJ_TOOLS_EXPORT obj_tools::operator * (const float& s, const Matrix3x
             res.elements_[i][j] = s * m.elements_[i][j];
         }
     }
+    return res;
+}
+
+Matrix3x3 Matrix3x3::createScaleMatrix(const float& dx, const float& dy, const float& dz) {
+    Matrix3x3 res;
+
+    res.setElement(0, 0, dx);
+    res.setElement(1, 1, dy);
+    res.setElement(2, 2, dz);
+
+    return res;
+}
+
+Matrix3x3 Matrix3x3::createRotateXMatrix(const double& deg) {
+    Matrix3x3 res;
+
+    res.setElement(1, 1, (float)cos(Math::degToRad(deg)));
+    res.setElement(1, 2, (float)sin(Math::degToRad(deg)));
+    res.setElement(2, 1,-(float)sin(Math::degToRad(deg)));
+    res.setElement(2, 2, (float)cos(Math::degToRad(deg)));
+
+    return res;
+}
+
+Matrix3x3 Matrix3x3::createRotateYMatrix(const double& deg) {
+    Matrix3x3 res;
+
+    res.setElement(0, 0, (float)cos(Math::degToRad(deg)));
+    res.setElement(0, 2,-(float)sin(Math::degToRad(deg)));
+    res.setElement(2, 0, (float)sin(Math::degToRad(deg)));
+    res.setElement(2, 2, (float)cos(Math::degToRad(deg)));
+
+    return res;
+}
+
+Matrix3x3 Matrix3x3::createRotateZMatrix(const double& deg) {
+    Matrix3x3 res;
+
+    res.setElement(0, 0, (float)cos(Math::degToRad(deg)));
+    res.setElement(0, 1, (float)sin(Math::degToRad(deg)));
+    res.setElement(1, 0,-(float)sin(Math::degToRad(deg)));
+    res.setElement(1, 1, (float)cos(Math::degToRad(deg)));
+
     return res;
 }
 
