@@ -28,6 +28,9 @@
     <Filter Include="Source Files\String">
       <UniqueIdentifier>{0fef6d72-abaf-4983-bcbe-c66c1889bcc4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\PointMass">
+      <UniqueIdentifier>{84dc064e-50e7-42fe-b4fe-00b6b8e99071}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\obj_tools\Vector\Vector2D.cpp">
@@ -50,6 +53,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\obj_tools\String\String.cpp">
       <Filter>Source Files\String</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\obj_tools\PointMass\PointMass.cpp">
+      <Filter>Source Files\PointMass</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
