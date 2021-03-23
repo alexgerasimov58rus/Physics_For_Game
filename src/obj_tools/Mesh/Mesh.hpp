@@ -2,13 +2,12 @@
 #pragma once
 
 #include "../tools_exp.hpp"
+#include "../Vector/Vector2D.hpp"
+#include "../Vector/Vector3D.hpp"
 #include <vector>
 #include <string>
 
 namespace obj_tools {
-
-	struct Vector2D;
-	struct Vector3D;
 
 	struct OBJ_TOOLS_EXPORT Mesh
 	{
@@ -17,7 +16,7 @@ namespace obj_tools {
 
 		bool loadFromObjFile(const std::string& path);
 		void compile(void);
-		void draw(void);
+		void render(void) const;
 
 		std::string getName(void) const { return this->name_; }
 
@@ -39,7 +38,7 @@ namespace obj_tools {
 				return indexes_[i][j] >= 0;
 			}
 
-			int indexes_[3][3];
+			size_t indexes_[3][3];
 		};
 
 		void clear(void);
@@ -61,6 +60,6 @@ namespace obj_tools {
 
 		std::vector<Face> faces_;
 
-		int callIndex_;
+		size_t callIndex_;
 	};
 };

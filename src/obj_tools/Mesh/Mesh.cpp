@@ -1,6 +1,4 @@
 
-#include "../Vector/Vector2D.hpp"
-#include "../Vector/Vector3D.hpp"
 #include "../String/String.hpp"
 #include "Mesh.hpp"
 #include <fstream>
@@ -15,7 +13,7 @@ using namespace std;
 
 Mesh::Mesh(const string& name) {
     this->name_ = name;
-    this->callIndex_ = -1;
+    this->callIndex_ = 0;
 }
 
 Mesh::~Mesh(void) {
@@ -86,7 +84,7 @@ void Mesh::compile(void) {
     glEndList();
 }
 
-void Mesh::draw(void) {
+void Mesh::render(void) const {
     glCallList(callIndex_);
 }
 
@@ -98,9 +96,9 @@ void Mesh::clear(){
 }
 
 void Mesh::deleteCallList(void) {
-    if (callIndex_ != -1) {
+    if (callIndex_ != 0) {
         glDeleteLists(callIndex_, 1);
-        callIndex_ = -1;
+        callIndex_ = 0;
     }
 }
 
@@ -173,7 +171,7 @@ bool Mesh::addFace(const std::string& line) {
 }
 
 bool Mesh::parseFaceWithSeparator(int* indexes, const string& s) const {
-    int index;
+    size_t index;
     vector<string> strings = String::split(s, '/');
 
     if (strings.size() != 3) return false;
@@ -206,9 +204,11 @@ bool Mesh::parseFaceWithSeparator(int* indexes, const string& s) const {
 }
 
 bool Mesh::parseFaceWithoutSeparator(int* indexes, const string& s) const {
-    int index = atoi(s.c_str());
+    size_t index = atoi(s.c_str());
     if (index < 1) return false;
     if (index > vertices_.size()) return false;
 
     indexes[0] = index - 1;
+
+    return true;
 }
