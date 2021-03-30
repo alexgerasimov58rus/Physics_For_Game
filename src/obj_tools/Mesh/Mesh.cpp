@@ -14,6 +14,7 @@ using namespace std;
 Mesh::Mesh(const string& name) {
     this->name_ = name;
     this->callIndex_ = 0;
+    this->boundingSphereRadius_ = 0.0;
 }
 
 Mesh::~Mesh(void) {
@@ -50,6 +51,9 @@ bool Mesh::loadFromObjFile(const string& path) {
 
 void Mesh::compile(void) {
     deleteCallList();
+
+    calcGeometryCenter();
+    calcBoundingRadius();
 
     callIndex_ = glGenLists(1);
 
@@ -211,4 +215,26 @@ bool Mesh::parseFaceWithoutSeparator(int* indexes, const string& s) const {
     indexes[0] = index - 1;
 
     return true;
+}
+
+void Mesh::calcGeometryCenter(void) {
+    int n = vertices_.size();
+
+    for(int i = 0; i < n; i++) {
+        geometryCenter_ += vertices_[i];
+    }
+
+    geometryCenter_ *= (1.0f / n);
+}
+
+void Mesh::calcBoundingRadius(void) {
+    boundingSphereRadius_ = 0.0;
+    int n = vertices_.size();
+
+    for(int i = 0; i < n; i++) {
+        double distanceSquare = (geometryCenter_ - vertices_[i]).normSquared();
+        boundingSphereRadius_ = max(boundingSphereRadius_, distanceSquare);
+    }
+
+    boundingSphereRadius_ = sqrt(boundingSphereRadius_);
 }

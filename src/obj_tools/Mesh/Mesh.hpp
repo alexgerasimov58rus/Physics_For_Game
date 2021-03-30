@@ -18,6 +18,8 @@ namespace obj_tools {
 		void compile(void);
 		void render(void) const;
 
+		double getBoundingSphereRadius(void) const { return this->boundingSphereRadius_; }
+
 		std::string getName(void) const { return this->name_; }
 
 		private: //_____________________________
@@ -52,6 +54,9 @@ namespace obj_tools {
 		bool parseFaceWithSeparator(int* indexes, const std::string& s) const;
 		bool parseFaceWithoutSeparator(int* indexes, const std::string& s) const;
 
+		void calcGeometryCenter(void);
+		void calcBoundingRadius(void);
+
 		std::string name_;
 
 		std::vector<Vector3D> vertices_;
@@ -59,6 +64,9 @@ namespace obj_tools {
 		std::vector<Vector2D> texels_;
 
 		std::vector<Face> faces_;
+
+		Vector3D geometryCenter_;
+		double	 boundingSphereRadius_;
 
 		size_t callIndex_;
 	};
