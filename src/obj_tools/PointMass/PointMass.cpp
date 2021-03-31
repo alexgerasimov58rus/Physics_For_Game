@@ -38,20 +38,12 @@ PointMass::PointMass(Mesh* mesh, const float& mass) {
     this->coeffElasticity_ = 0.5f;
 }
 
-bool PointMass::hasCollision(const PointMass& point) const {
-    double distanceSquared = (centerMass_ - point.centerMass_).normSquared();
-    double minDistanceSquared = mesh_->getBoundingSphereRadius() + point.mesh_->getBoundingSphereRadius();
-    minDistanceSquared *= minDistanceSquared;
-
-    return distanceSquared < minDistanceSquared;
-}
-
 void PointMass::update(const float& dTime) {
-    linearAcc_   = force_.getForce() * (1.0f / mass_);
-    linearVel_  += linearAcc_ * dTime;
-    centerMass_ += linearVel_ * dTime;
-
     force_.update(dTime);
+
+    Vector3D linearAcc = force_.getForce() * (1.0f / mass_);
+    linearVel_  += linearAcc  * dTime;
+    centerMass_ += linearVel_ * dTime;
 }
 
 void PointMass::render(void) {
@@ -62,14 +54,21 @@ void PointMass::render(void) {
         centerMass_.getX(), centerMass_.getY(), centerMass_.getZ(), 1.0f
     };
 
-    glPushMatrix();        
-        glMatrixMode(GL_MODELVIEW);
-        glLoadMatrixf(homogeneousMatrix);
-        mesh_->render();
+    glPushMatrix();
+    glMatrixMode(GL_MODELVIEW);
+    glLoadMatrixf(homogeneousMatrix);
+    mesh_->render();
     glPopMatrix();
 }
 
 void PointMass::stop(void) {
     linearVel_ = Vector3D();
-    linearAcc_ = Vector3D();
+}
+
+bool PointMass::hasCollision(const PointMass& point) const {
+    double distanceSquared = (centerMass_ - point.centerMass_).normSquared();
+    double minDistanceSquared = mesh_->getBoundingSphereRadius() + point.mesh_->getBoundingSphereRadius();
+    minDistanceSquared *= minDistanceSquared;
+
+    return distanceSquared < minDistanceSquared;
 }

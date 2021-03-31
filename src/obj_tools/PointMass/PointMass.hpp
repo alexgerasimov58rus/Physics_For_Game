@@ -13,15 +13,17 @@ namespace obj_tools {
 		static void handleCollision(PointMass* p1, PointMass* p2, const float& dTime);
 
 		PointMass(Mesh* mesh, const float& mass);
-		
+
+		virtual void update(const float& dTime);
+		virtual void render(void);
+		virtual void stop(void);
+
+		float getMass(void) const { return mass_; }
+
 		void setLocation(const Vector3D& location) { centerMass_ = location; }
 		
 		void setCoeffElasticity(const float& coeff) { coeffElasticity_ = coeff; }
 		bool hasCollision(const PointMass& point) const;
-
-		void update(const float& dTime);
-		void render(void);
-		void stop(void);
 
 		Force force_;
 
@@ -33,6 +35,5 @@ namespace obj_tools {
 
 		Vector3D centerMass_;
 		Vector3D linearVel_;
-		Vector3D linearAcc_;
 	};
 };
