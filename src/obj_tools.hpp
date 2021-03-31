@@ -6,4 +6,6 @@
 #include "./obj_tools/Matrix/Matrix3x3.hpp"
 #include "./obj_tools/Mesh/Mesh.hpp"
 #include "./obj_tools/String/String.hpp"
+#include "./obj_tools/Math/Math.hpp"
 #include "./obj_tools/PointMass/PointMass.hpp"
+#include "./obj_tools/RigidBody/RigidBody.hpp"

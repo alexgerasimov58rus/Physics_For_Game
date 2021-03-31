@@ -34,6 +34,9 @@
     <Filter Include="Source Files\Force">
       <UniqueIdentifier>{28d49ca7-a44a-4871-a8f4-b3166f4351b4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\RigidBody">
+      <UniqueIdentifier>{c09546b8-8fc5-434f-97fd-bb86e55f8000}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\obj_tools\Vector\Vector2D.cpp">
@@ -62,6 +65,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\obj_tools\Force\Force.cpp">
       <Filter>Source Files\Force</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\obj_tools\RigidBody\RigidBody.cpp">
+      <Filter>Source Files\RigidBody</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
