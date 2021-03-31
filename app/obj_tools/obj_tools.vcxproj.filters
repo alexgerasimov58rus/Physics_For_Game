@@ -31,6 +31,9 @@
     <Filter Include="Source Files\PointMass">
       <UniqueIdentifier>{84dc064e-50e7-42fe-b4fe-00b6b8e99071}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Force">
+      <UniqueIdentifier>{28d49ca7-a44a-4871-a8f4-b3166f4351b4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\obj_tools\Vector\Vector2D.cpp">
@@ -56,6 +59,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\obj_tools\PointMass\PointMass.cpp">
       <Filter>Source Files\PointMass</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\obj_tools\Force\Force.cpp">
+      <Filter>Source Files\Force</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

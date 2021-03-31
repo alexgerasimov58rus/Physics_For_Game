@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\obj_tools\Force\Force.cpp" />
     <ClCompile Include="..\..\src\obj_tools\Math\Math.cpp" />
     <ClCompile Include="..\..\src\obj_tools\Matrix\Matrix2x2.cpp" />
     <ClCompile Include="..\..\src\obj_tools\Matrix\Matrix3x3.cpp" />

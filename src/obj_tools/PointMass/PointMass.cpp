@@ -28,15 +28,8 @@ void PointMass::handleCollision(PointMass* p1, PointMass* p2, const float& dTime
     Vector3D velNormalize1 = p1->linearVel_.normalize();
     Vector3D velNormalize2 = p2->linearVel_.normalize();
 
-    p1->forces_ = Vector3D(
-        (float)fabs(p1->forces_.getX()) * velNormalize1.getX(), 
-        (float)fabs(p1->forces_.getY()) * velNormalize1.getY(),
-        (float)fabs(p1->forces_.getZ()) * velNormalize1.getZ());
-
-    p2->forces_ = Vector3D(
-        (float)fabs(p2->forces_.getX()) * velNormalize2.getX(),
-        (float)fabs(p2->forces_.getY()) * velNormalize2.getY(),
-        (float)fabs(p2->forces_.getZ()) * velNormalize2.getZ());
+    p1->force_.setForceDirection(velNormalize1);
+    p2->force_.setForceDirection(velNormalize2);
 }
 
 PointMass::PointMass(Mesh* mesh, const float& mass) {
@@ -54,9 +47,11 @@ bool PointMass::hasCollision(const PointMass& point) const {
 }
 
 void PointMass::update(const float& dTime) {
-    linearAcc_   = forces_ * (1.0f / mass_);
+    linearAcc_   = force_.getForce() * (1.0f / mass_);
     linearVel_  += linearAcc_ * dTime;
     centerMass_ += linearVel_ * dTime;
+
+    force_.update(dTime);
 }
 
 void PointMass::render(void) {

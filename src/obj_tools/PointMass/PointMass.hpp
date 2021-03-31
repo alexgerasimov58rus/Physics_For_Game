@@ -2,6 +2,7 @@
 
 #include "../tools_exp.hpp"
 #include "../Vector/Vector3D.hpp"
+#include "../Force/Force.hpp"
 
 namespace obj_tools {
 
@@ -13,18 +14,18 @@ namespace obj_tools {
 
 		PointMass(Mesh* mesh, const float& mass);
 		
-		void setForces  (const Vector3D& forces) { forces_ = forces;  }
 		void setLocation(const Vector3D& location) { centerMass_ = location; }
 		
 		void setCoeffElasticity(const float& coeff) { coeffElasticity_ = coeff; }
-
 		bool hasCollision(const PointMass& point) const;
 
 		void update(const float& dTime);
 		void render(void);
 		void stop(void);
 
-		private: //_____________________________
+		Force force_;
+
+		protected: //_____________________________
 	
 		Mesh* mesh_;
 		float mass_;
@@ -33,6 +34,5 @@ namespace obj_tools {
 		Vector3D centerMass_;
 		Vector3D linearVel_;
 		Vector3D linearAcc_;
-		Vector3D forces_;
 	};
 };
