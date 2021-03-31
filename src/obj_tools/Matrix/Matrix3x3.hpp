@@ -9,9 +9,9 @@ namespace obj_tools {
 
 		static Matrix3x3 createScaleMatrix(const float& dx, const float& dy, const float& dz);
 		
-		static Matrix3x3 createRotateXMatrix(const double& deg);
-		static Matrix3x3 createRotateYMatrix(const double& deg);
-		static Matrix3x3 createRotateZMatrix(const double& deg);
+		static Matrix3x3 createRotateXMatrix(const double& rad);
+		static Matrix3x3 createRotateYMatrix(const double& rad);
+		static Matrix3x3 createRotateZMatrix(const double& rad);
 
 		Matrix3x3(void);
 		Matrix3x3(const Matrix3x3& m);

@@ -20,13 +20,13 @@ Matrix2x2 OBJ_TOOLS_EXPORT obj_tools::operator * (const float& s, const Matrix2x
     return res;
 }
 
-Matrix2x2 Matrix2x2::createRotateMatrix(const double& deg) {
+Matrix2x2 Matrix2x2::createRotateMatrix(const double& rad) {
     Matrix2x2 res;
 
-    res.setElement(0, 0, (float)cos(Math::degToRad(deg)));
-    res.setElement(0, 1, (float)sin(Math::degToRad(deg)));
-    res.setElement(1, 0,-(float)sin(Math::degToRad(deg)));
-    res.setElement(1, 1, (float)cos(Math::degToRad(deg)));
+    res.setElement(0, 0, (float)cos(rad));
+    res.setElement(0, 1, (float)sin(rad));
+    res.setElement(1, 0,-(float)sin(rad));
+    res.setElement(1, 1, (float)cos(rad));
 
     return res;
 }

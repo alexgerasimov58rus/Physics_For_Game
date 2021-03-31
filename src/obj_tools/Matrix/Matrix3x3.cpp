@@ -30,13 +30,13 @@ Matrix3x3 Matrix3x3::createScaleMatrix(const float& dx, const float& dy, const f
     return res;
 }
 
-Matrix3x3 Matrix3x3::createRotateXMatrix(const double& deg) {
+Matrix3x3 Matrix3x3::createRotateXMatrix(const double& rad) {
     Matrix3x3 res;
 
-    res.setElement(1, 1, (float)cos(Math::degToRad(deg)));
-    res.setElement(1, 2, (float)sin(Math::degToRad(deg)));
-    res.setElement(2, 1,-(float)sin(Math::degToRad(deg)));
-    res.setElement(2, 2, (float)cos(Math::degToRad(deg)));
+    res.setElement(1, 1, (float)cos(rad));
+    res.setElement(1, 2, (float)sin(rad));
+    res.setElement(2, 1,-(float)sin(rad));
+    res.setElement(2, 2, (float)cos(rad));
 
     return res;
 }
