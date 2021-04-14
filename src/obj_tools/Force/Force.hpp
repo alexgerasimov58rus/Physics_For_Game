@@ -19,7 +19,7 @@ namespace obj_tools {
 		Vector3D getForce(void) const;
 		Vector3D getPointLocation(void) const { return forceLocation_; }
 
-		void setForceDirection(const Vector3D& direction);
+		void setForce(const Vector3D& force);
 
 		private: //_____________________________
 	

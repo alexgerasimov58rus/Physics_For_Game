@@ -35,10 +35,6 @@ Vector3D Force::getForce(void) const {
     return forceVector_;
 }
 
-void Force::setForceDirection(const Vector3D& direction) {
-    this->forceVector_ = Vector3D(
-        (float)fabs(forceVector_.getX()) * direction.normalize().getX(),
-        (float)fabs(forceVector_.getY()) * direction.normalize().getY(),
-        (float)fabs(forceVector_.getZ()) * direction.normalize().getZ()
-    );
+void Force::setForce(const Vector3D& force) {
+    this->forceVector_ = force;
 }
