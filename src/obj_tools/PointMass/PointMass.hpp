@@ -10,26 +10,27 @@ namespace obj_tools {
 
 	struct OBJ_TOOLS_EXPORT PointMass
 	{
-		static void handleCollision(PointMass* p1, PointMass* p2, const float& dTime);
-
 		PointMass(Mesh* mesh, const float& mass);
 
 		virtual void update(const float& dTime);
 		virtual void render(void);
 		virtual void stop(void);
 
-		float getMass(void) const { return mass_; }
-
+		const float& getMass(void) const { return mass_; }
+		const float& getCoeffElasticity(void) const { return coeffElasticity_;  }
+		const Vector3D& getLocation(void) const { return  centerMass_; }
+		const Vector3D& getLinearVelocity(void) const { return linearVel_;  }
+		
+		void setLinearVelocity(const Vector3D& velocity) { linearVel_ = velocity; }
 		void setLocation(const Vector3D& location) { centerMass_ = location; }
 		
 		void setCoeffElasticity(const float& coeff) { coeffElasticity_ = coeff; }
-		bool hasCollision(const PointMass& point) const;
 
 		Force force_;
+		Mesh* mesh_;
 
 		protected: //_____________________________
 	
-		Mesh* mesh_;
 		float mass_;
 		float coeffElasticity_;
 

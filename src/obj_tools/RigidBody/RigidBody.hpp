@@ -15,6 +15,10 @@ namespace obj_tools {
 		void stop(void);
 
 		void setRotationInertia(const Vector3D& rotationInertia) { this->rotationInertia_ = rotationInertia; }
+		void setAngularVelocity(const Vector3D& velocity) { this->angularVel_ = velocity; }
+
+		const Vector3D& getAngularVelocity(void) const { return angularVel_; }
+		const Vector3D& getRotationInertia(void) const { return rotationInertia_; }
 
 		private: //_____________________________
 	
