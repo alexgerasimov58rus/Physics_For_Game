@@ -9,3 +9,5 @@
 #include "./obj_tools/Math/Math.hpp"
 #include "./obj_tools/PointMass/PointMass.hpp"
 #include "./obj_tools/RigidBody/RigidBody.hpp"
+#include "./obj_tools/Collision/Collision.hpp"
+#include "./obj_tools/Collision/CollisionRigidBody.hpp"

@@ -37,6 +37,9 @@
     <Filter Include="Source Files\RigidBody">
       <UniqueIdentifier>{c09546b8-8fc5-434f-97fd-bb86e55f8000}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Collision">
+      <UniqueIdentifier>{3c414526-57ab-4823-a80d-234ce7a3aa22}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\obj_tools\Vector\Vector2D.cpp">
@@ -68,6 +71,12 @@
     </ClCompile>
     <ClCompile Include="..\..\src\obj_tools\RigidBody\RigidBody.cpp">
       <Filter>Source Files\RigidBody</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\obj_tools\Collision\Collision.cpp">
+      <Filter>Source Files\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\obj_tools\Collision\CollisionRigidBody.cpp">
+      <Filter>Source Files\Collision</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
