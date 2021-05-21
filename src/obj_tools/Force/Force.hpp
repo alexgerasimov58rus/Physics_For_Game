@@ -11,7 +11,11 @@ namespace obj_tools {
 		Force(void);
 		
 		void applyConstantForce(const Vector3D& force);
-		void applyProvisionalForce(const Vector3D& force, const float& timeOfAction);
+		void applyImpulseForce(const Vector3D& force, const float& timeOfAction);
+
+		void applyGravityForce(const float& mass);
+		void undoGravityForce(void) { forceGravity_ = Vector3D(); }
+
 
 		void setPointForceLocation(const Vector3D& point) { this->forceLocation_ = point; }
 		void update(const float& dT);
@@ -28,5 +32,6 @@ namespace obj_tools {
 
 		Vector3D forceVector_;
 		Vector3D forceLocation_;
+		Vector3D forceGravity_;
 	};
 };

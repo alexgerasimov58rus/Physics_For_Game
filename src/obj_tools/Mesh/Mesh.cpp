@@ -233,7 +233,7 @@ void Mesh::calcBoundingRadius(void) {
 
     for(int i = 0; i < n; i++) {
         double distanceSquare = (geometryCenter_ - vertices_[i]).normSquared();
-        boundingSphereRadius_ = max(boundingSphereRadius_, distanceSquare);
+        boundingSphereRadius_ = max(boundingSphereRadius_, (float)distanceSquare);
     }
 
     boundingSphereRadius_ = sqrt(boundingSphereRadius_);

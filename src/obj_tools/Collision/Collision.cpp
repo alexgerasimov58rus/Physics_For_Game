@@ -12,8 +12,8 @@ using namespace obj_tools;
 COLLISION_STATUS Collision::colissionOccured(void) const {
     Vector3D distanceVector = obj1_->getLocation() - obj2_->getLocation();
     double distance = fabs(distanceVector.norm()) -
-        obj1_->mesh_->getBoundingSphereRadius() - 
-        obj2_->mesh_->getBoundingSphereRadius();
+        obj1_->getBoundingSphereRadius() - 
+        obj2_->getBoundingSphereRadius();
 
     if (fabs(distance) < DIST_TOUCHING) return COLLISION_STATUS::COLLISION_TOUCHING;
     if (distance  < 0.0 ) return COLLISION_STATUS::COLLISION_OVERLAPPING;

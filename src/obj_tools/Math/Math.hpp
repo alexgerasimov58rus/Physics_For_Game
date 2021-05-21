@@ -6,8 +6,11 @@ namespace obj_tools {
     struct OBJ_TOOLS_EXPORT Math
     {
         static const double PI;
+        static const double G;
+
         static double degToRad(const double& deg);
 
+        static bool   isCloseToZero(const float& value);
         static double getInertiaMomentHomogeneousSphere(const float& r, const float& m);
         static double getInertiaMomentHollowSphere(const float& r, const float& m);
         static double getInertiaMomentHoopRelativeAxis(const float& r, const float& m);

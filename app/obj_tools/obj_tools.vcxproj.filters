@@ -40,6 +40,12 @@
     <Filter Include="Source Files\Collision">
       <UniqueIdentifier>{3c414526-57ab-4823-a80d-234ce7a3aa22}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Spring">
+      <UniqueIdentifier>{48a7720b-4f29-402a-bd73-d8122e72d6dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Cloth">
+      <UniqueIdentifier>{808ad244-3aec-4d90-8031-bb1f76756aa4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\obj_tools\Vector\Vector2D.cpp">
@@ -77,6 +83,15 @@
     </ClCompile>
     <ClCompile Include="..\..\src\obj_tools\Collision\CollisionRigidBody.cpp">
       <Filter>Source Files\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\obj_tools\PointMass\PointMassBase.cpp">
+      <Filter>Source Files\PointMass</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\obj_tools\Spring\Spring.cpp">
+      <Filter>Source Files\Spring</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\obj_tools\Cloth\Cloth.cpp">
+      <Filter>Source Files\Cloth</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,5 +1,6 @@
 
 #include "Force.hpp"
+#include "../Math/Math.hpp"
 #include "math.h"
 
 using namespace obj_tools;
@@ -15,10 +16,14 @@ void Force::applyConstantForce(const Vector3D& force) {
     isConstant_ = true;
 }
 
-void Force::applyProvisionalForce(const Vector3D& force, const float& timeOfAction) {
+void Force::applyImpulseForce(const Vector3D& force, const float& timeOfAction) {
     forceVector_ = force;
     timeOfAction_ = -timeOfAction;
     isConstant_ = false;
+}
+
+void Force::applyGravityForce(const float& mass) { 
+    forceGravity_ = Vector3D(0.0f, -(float)Math::G * mass, 0.0f); 
 }
 
 void Force::update(const float& dT) {
@@ -28,11 +33,13 @@ void Force::update(const float& dT) {
 }
 
 Vector3D Force::getForce(void) const {
+    Vector3D force = forceVector_;
+
     if (!isConstant_) {
-        return (timeOfAction_ < 0.0f) ? forceVector_ : Vector3D();
+        force = (timeOfAction_ < 0.0f) ? forceVector_ : Vector3D();
     }
 
-    return forceVector_;
+    return force + forceGravity_;
 }
 
 void Force::setForce(const Vector3D& force) {

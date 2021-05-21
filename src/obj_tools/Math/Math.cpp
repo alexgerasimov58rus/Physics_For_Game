@@ -1,9 +1,18 @@
 
 #include "Math.hpp"
+#include <math.h>
 
 using namespace obj_tools;
+using namespace std;
+
+#define DELTA 0.000001
 
 const double Math::PI = 3.141592653589;
+const double Math::G = 9.8;
+
+bool Math::isCloseToZero(const float& value) {
+    return fabs(value) <= DELTA;
+}
 
 double Math::degToRad(const double& deg) {
     return deg * PI / 180.0;

@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\obj_tools\Cloth\Cloth.cpp" />
     <ClCompile Include="..\..\src\obj_tools\Collision\Collision.cpp" />
     <ClCompile Include="..\..\src\obj_tools\Collision\CollisionRigidBody.cpp" />
     <ClCompile Include="..\..\src\obj_tools\Force\Force.cpp" />
@@ -27,7 +28,9 @@
     <ClCompile Include="..\..\src\obj_tools\Matrix\Matrix3x3.cpp" />
     <ClCompile Include="..\..\src\obj_tools\Mesh\Mesh.cpp" />
     <ClCompile Include="..\..\src\obj_tools\PointMass\PointMass.cpp" />
+    <ClCompile Include="..\..\src\obj_tools\PointMass\PointMassBase.cpp" />
     <ClCompile Include="..\..\src\obj_tools\RigidBody\RigidBody.cpp" />
+    <ClCompile Include="..\..\src\obj_tools\Spring\Spring.cpp" />
     <ClCompile Include="..\..\src\obj_tools\String\String.cpp" />
     <ClCompile Include="..\..\src\obj_tools\Vector\Vector2D.cpp" />
     <ClCompile Include="..\..\src\obj_tools\Vector\Vector3D.cpp" />

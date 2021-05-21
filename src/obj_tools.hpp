@@ -11,3 +11,4 @@
 #include "./obj_tools/RigidBody/RigidBody.hpp"
 #include "./obj_tools/Collision/Collision.hpp"
 #include "./obj_tools/Collision/CollisionRigidBody.hpp"
+#include "./obj_tools/Cloth/Cloth.hpp"

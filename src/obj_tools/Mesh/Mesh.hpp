@@ -18,7 +18,7 @@ namespace obj_tools {
 		void compile(void);
 		void render(void) const;
 
-		double getBoundingSphereRadius(void) const { return this->boundingSphereRadius_; }
+		float getBoundingSphereRadius(void) const { return this->boundingSphereRadius_; }
 
 		std::string getName(void) const { return this->name_; }
 
@@ -66,7 +66,7 @@ namespace obj_tools {
 		std::vector<Face> faces_;
 
 		Vector3D geometryCenter_;
-		double	 boundingSphereRadius_;
+		float	 boundingSphereRadius_; 
 
 		size_t callIndex_;
 	};

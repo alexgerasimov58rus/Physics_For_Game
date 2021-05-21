@@ -1,6 +1,7 @@
 
 #include "PointMass.hpp"
 #include "../Mesh/Mesh.hpp"
+#include "../Math/Math.hpp"
 
 #ifdef WIN32
     #include <windows.h>
@@ -10,18 +11,9 @@
 using namespace obj_tools;
 using namespace std;
 
-PointMass::PointMass(Mesh* mesh, const float& mass) {
+PointMass::PointMass(Mesh* mesh, const float& mass): PointMassBase(mass) {
     this->mesh_ = mesh;
-    this->mass_ = mass;
-    this->coeffElasticity_ = 0.5f;
-}
-
-void PointMass::update(const float& dTime) {
-    force_.update(dTime);
-
-    Vector3D linearAcc = force_.getForce() * (1.0f / mass_);
-    linearVel_  += linearAcc  * dTime;
-    centerMass_ += linearVel_ * dTime;
+    boundingSphereRadius_ = mesh->getBoundingSphereRadius();
 }
 
 void PointMass::render(void) {
@@ -39,7 +31,13 @@ void PointMass::render(void) {
     glPopMatrix();
 }
 
-void PointMass::stop(void) {
-    linearVel_ = Vector3D();
+PointMassBase* PointMass::clone(void) {
+    PointMassBase* p = new PointMass(mesh_, mass_);
+    p->setCoeffElasticity(coeffElasticity_);
+    p->setBoundingSphereRadius(boundingSphereRadius_);
+    p->setLocation(centerMass_);
+    p->setLinearVelocity(linearVel_);
+    p->force_ = force_;
+    
+    return p;
 }
-
